@@ -27,12 +27,13 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->user()->can('isRole', 'App\Admin')) {
-            $usersCount = User::all()->count();
-            return view('dashboard.home', compact('usersCount'));
+            return view('dashboard.home');
         } else if($request->user()->can('isRole', 'App\Maestro')) {
             return view('home');
         } else if($request->user()->can('isRole', 'App\Alumno')) {
-            return view('home');
+            $alumno = $request->user()->loggable;
+            //return dd($alumno);
+            return view('home', compact('alumno'));
         }
 
         return view('home');

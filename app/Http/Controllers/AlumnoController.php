@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class AlumnoController extends Controller
@@ -71,6 +72,14 @@ class AlumnoController extends Controller
         $alumno->certificado_parcial = $this->uploadFileForAlumno($request, 'certificado_parcial', $alumno);
 
         $alumno->save();
+
+        $credentials = $request->only('email', 'password');
+        $credentials['name'] = $alumno->nombre;
+        $credentials['password'] = Hash::make($credentials['password']);
+
+        $user = User::create($credentials);
+
+        $alumno->user()->save($user);
 
         return redirect('alumnos');
     }

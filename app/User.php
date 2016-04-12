@@ -23,4 +23,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get all of the owning loggable models.
+     */
+    public function loggable()
+    {
+        return $this->morphTo();
+    }
 }

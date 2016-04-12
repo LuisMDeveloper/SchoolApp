@@ -36,14 +36,12 @@
 
                 <div class="panel-body">
                     @can('isRole', 'App\Alumno')
-                    Bienvenido! Alumno
+                    Bienvenido! {{ $alumno->nombre }} {{ $alumno->apellidos }}
                     @endcan
 
                     @can('isRole', 'App\Maestro')
                     Bienvenido! Maestro
                     @endcan
-
-                    General
                 </div>
             </div>
         </div>
