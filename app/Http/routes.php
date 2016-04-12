@@ -12,6 +12,8 @@
 */
 
 Route::get('/', function () {
+    //$users = \App\User::where('loggable_type', '=', 'App\Alumno')->get()->contains('id', 2);
+    //return dd($users);
     return view('welcome');
 });
 

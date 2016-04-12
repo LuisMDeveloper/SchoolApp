@@ -35,7 +35,15 @@
                 <div class="panel-heading">Cursos</div>
 
                 <div class="panel-body">
-                    Bienvenido Alumno, Maestro o Administrador
+                    @can('isRole', 'App\Alumno')
+                    Bienvenido! Alumno
+                    @endcan
+
+                    @can('isRole', 'App\Maestro')
+                    Bienvenido! Maestro
+                    @endcan
+
+                    General
                 </div>
             </div>
         </div>
