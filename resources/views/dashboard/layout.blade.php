@@ -19,9 +19,10 @@
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
                             <li role="presentation" class="{{ Request::is('home') ? 'active' : '' }}"><a href="{{ URL::to('home') }}">Home</a></li>
-                            <li role="presentation" class="{{ Request::is('usuarios') ? 'active' : '' }}"><a href="{{ URL::to('usuarios') }}">Usuarios <span class="badge">{{$usersCount}}</span></a></li>
-                            <li role="presentation" class="{{ Request::is('alumnos') ? 'active' : '' }}"><a href="{{ URL::to('alumnos') }}">Alumnos <span class="badge">{{$alumnosCount}}</span></a></li>
-                            <li role="presentation"><a href="#">Messages</a></li>
+                            <li role="presentation" class="{{ Request::is('usuarios') ? 'active' : '' }}"><a href="{{ URL::to('usuarios') }}">Usuarios <span class="badge pull-right">{{$usersCount}}</span></a></li>
+                            <li role="presentation" class="{{ Request::is('alumnos') ? 'active' : '' }}"><a href="{{ URL::to('alumnos') }}">Alumnos <span class="badge pull-right">{{$alumnosCount}}</span></a></li>
+                            <li role="presentation" class="{{ Request::is('grupos') ? 'active' : '' }}"><a href="{{ URL::to('grupos') }}">Grupos <span class="badge pull-right">{{$gruposCount}}</span></a></li>
+                            <li role="presentation" class="{{ Request::is('materias') ? 'active' : '' }}"><a href="{{ URL::to('materias') }}">Materias <span class="badge pull-right">{{$materiasCount}}</span></a></li>
                         </ul>
                     </div>
                 </div>

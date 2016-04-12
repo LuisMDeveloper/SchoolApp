@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use App\Alumno;
+use App\Grupo;
+use App\Materia;
 use App\User;
 use Illuminate\Support\ServiceProvider;
 
@@ -20,6 +22,12 @@ class AppServiceProvider extends ServiceProvider
 
         $alumnosCount = Alumno::all()->count();
         view()->share('alumnosCount', $alumnosCount);
+
+        $gruposCount = Grupo::all()->count();
+        view()->share('gruposCount', $gruposCount);
+
+        $materiasCount = Materia::all()->count();
+        view()->share('materiasCount', $materiasCount);
     }
 
     /**

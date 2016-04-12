@@ -13,4 +13,12 @@ class Alumno extends Model
     {
         return $this->morphOne('App\User', 'loggable');
     }
+
+    /**
+     * Get the grupo of this alumno.
+     */
+    public function grupo()
+    {
+        return $this->belongsTo('App\Grupo');
+    }
 }

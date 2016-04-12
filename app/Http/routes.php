@@ -28,3 +28,13 @@ Route::get('file/{file}', ['as' => 'document', function ($file) {
 
 Route::resource('usuarios', 'UserController');
 Route::resource('alumnos', 'AlumnoController');
+
+Route::get('grupos/asignar/{id}', 'GrupoController@asignar');
+Route::get('grupos/random/{id}', 'GrupoController@random');
+Route::get('grupos/alfa/{id}', 'GrupoController@alfa');
+Route::get('grupos/ecxel/{id}', 'GrupoController@ecxel');
+Route::put('grupos/manual/{id}', 'GrupoController@manual');
+Route::get('grupos/quitar/{grupo}/{alumno}', 'GrupoController@quitar');
+Route::resource('grupos', 'GrupoController');
+
+Route::resource('materias', 'MateriaController');
