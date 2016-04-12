@@ -2,7 +2,12 @@
 
 @section('content-panel')
     <div class="panel panel-default">
-        <div class="panel-heading">Usuarios</div>
+        <div class="panel-heading">
+            Usuarios
+            <a class="btn btn-xs btn-primary pull-right" href="{{ URL::to('usuarios/create') }}" role="button">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Crear Usuario
+            </a>
+        </div>
 
         <div class="panel-body">
             <table class="table table-striped">
@@ -25,11 +30,6 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="panel-footer">
-            <a class="btn btn-primary" href="{{ URL::to('usuarios/create') }}" role="button">
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Crear Usuario
-            </a>
         </div>
     </div>
 @endsection

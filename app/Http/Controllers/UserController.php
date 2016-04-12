@@ -31,8 +31,7 @@ class UserController extends Controller
             abort(403);
         }
         $users = User::all();
-        $usersCount = $users->count();
-        return view('dashboard.usuarios.index', compact('usersCount', 'users'));
+        return view('dashboard.usuarios.index', compact('users'));
     }
 
     /**
@@ -45,9 +44,7 @@ class UserController extends Controller
         if ($request->user()->cannot('isRole', 'App\Admin')) {
             abort(403);
         }
-        $users = User::all();
-        $usersCount = $users->count();
-        return view('dashboard.usuarios.create', compact('usersCount'));
+        return view('dashboard.usuarios.create');
     }
 
     /**
@@ -85,10 +82,8 @@ class UserController extends Controller
             abort(403);
         }
 
-        $users = User::all();
-        $usersCount = $users->count();
         $user = User::find($id);
-        return view('dashboard.usuarios.show', compact('usersCount', 'user'));
+        return view('dashboard.usuarios.show', compact('user'));
     }
 
     /**

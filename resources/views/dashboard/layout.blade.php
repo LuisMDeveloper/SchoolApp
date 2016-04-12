@@ -20,7 +20,7 @@
                         <ul class="nav nav-pills nav-stacked">
                             <li role="presentation" class="{{ Request::is('home') ? 'active' : '' }}"><a href="{{ URL::to('home') }}">Home</a></li>
                             <li role="presentation" class="{{ Request::is('usuarios') ? 'active' : '' }}"><a href="{{ URL::to('usuarios') }}">Usuarios <span class="badge">{{$usersCount}}</span></a></li>
-                            <li role="presentation" class="{{ Request::is('alumnos') ? 'active' : '' }}"><a href="{{ URL::to('alumnos') }}">Alumnos</a></li>
+                            <li role="presentation" class="{{ Request::is('alumnos') ? 'active' : '' }}"><a href="{{ URL::to('alumnos') }}">Alumnos <span class="badge">{{$alumnosCount}}</span></a></li>
                             <li role="presentation"><a href="#">Messages</a></li>
                         </ul>
                     </div>

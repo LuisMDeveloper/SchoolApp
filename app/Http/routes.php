@@ -21,4 +21,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('file/{file}', ['as' => 'document', function ($file) {
+    $storagePath  = Storage::disk('public')->getDriver()->getAdapter()->getPathPrefix();
+    return response()->download($storagePath.$file);//
+}]);
+
 Route::resource('usuarios', 'UserController');
+Route::resource('alumnos', 'AlumnoController');
