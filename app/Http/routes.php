@@ -38,3 +38,7 @@ Route::get('grupos/quitar/{grupo}/{alumno}', 'GrupoController@quitar');
 Route::resource('grupos', 'GrupoController');
 
 Route::resource('materias', 'MateriaController');
+Route::resource('maestros', 'MaestrosController');
+Route::get('cursos/asignar/{id}', 'CursosController@asignar');
+Route::put('cursos/manual/{id}', 'CursosController@manual');
+Route::resource('cursos', 'CursosController');

@@ -16,9 +16,9 @@
                     <th>Nombre</th>
                     <th>Apellidos</th>
                     <th>Fecha de nacimiento</th>
-                    <th>Teléfono</th>
+                    <th>Tel&eacute;fono</th>
                     <th>Nombre del tutor</th>
-                    <th>Teléfono de emergencia</th>
+                    <th>Tel&eacute;fono de emergencia</th>
                     <th>Facebook</th>
                     <th>Estado</th>
                 </tr>

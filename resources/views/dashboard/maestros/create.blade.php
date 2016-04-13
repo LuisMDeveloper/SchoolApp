@@ -12,13 +12,13 @@
     @endif
     <div class="panel panel-default">
         <div class="panel-heading">
-            <a href="{{ URL::to('alumnos') }}" class="btn btn-default btn-xs" role="button">
+            <a href="{{ URL::to('maestros') }}" class="btn btn-default btn-xs" role="button">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             </a>
-            Dar de alta alumno
+            Dar de alta maestro
         </div>
         <div class="panel-body">
-            {!! Form::open(array('url' => 'alumnos', 'files' => true)) !!}
+            {!! Form::open(array('url' => 'maestros')) !!}
 
             <div class="form-group">
                 {!! Form::label('nombre', 'Nombre:') !!}
@@ -51,21 +51,6 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('nombre_del_tutor', 'Nombre del tutor:') !!}
-                {!! Form::text('nombre_del_tutor', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('num_emergencia', 'Numero de emergencia:') !!}
-                {!! Form::text('num_emergencia', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('facebook', 'Facebook:') !!}
-                {!! Form::text('facebook', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
                 {!! Form::label('email', 'Email:') !!}
                 {!! Form::email('email', null, ['class' => 'form-control']) !!}
             </div>
@@ -73,36 +58,6 @@
             <div class="form-group">
                 {!! Form::label('password', 'Password:') !!}
                 {!! Form::password('password', ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('como_nos_conociste', '&iquest;Como nos conociste?:') !!}
-                {!! Form::textarea('como_nos_conociste', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('certificado_secundaria', 'Certificado de Secundaria:') !!}
-                {!! Form::file('certificado_secundaria', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('acta_de_nacimiento_path', 'Acta de Nacimiento:') !!}
-                {!! Form::file('acta_de_nacimiento_path', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('curp', 'CURP:') !!}
-                {!! Form::file('curp', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('comprobande_de_domicilio', 'Comprobande de Domicilio:') !!}
-                {!! Form::file('comprobande_de_domicilio', null, ['class' => 'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('certificado_parcial', 'Certificado Parcial:') !!}
-                {!! Form::file('certificado_parcial', null, ['class' => 'form-control']) !!}
             </div>
 
             {!! Form::submit('Dar de alta', ['class' => 'btn btn-primary pull-right']) !!}

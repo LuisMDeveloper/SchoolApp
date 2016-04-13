@@ -32,7 +32,7 @@ class HomeController extends Controller
             return view('home');
         } else if($request->user()->can('isRole', 'App\Alumno')) {
             $alumno = $request->user()->loggable;
-            //return dd($alumno);
+            //return dd($alumno->grupo()->get()[0]->cursos()->get());
             return view('home', compact('alumno'));
         }
 

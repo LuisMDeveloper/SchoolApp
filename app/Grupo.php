@@ -13,4 +13,12 @@ class Grupo extends Model
     {
         return $this->hasMany('App\Alumno');
     }
+
+    /**
+     * The grupos that belong to the curso.
+     */
+    public function cursos()
+    {
+        return $this->belongsToMany('App\Curso');
+    }
 }

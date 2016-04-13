@@ -17,6 +17,9 @@
                 <div class="panel-heading">Bienvenido!</div>
 
                 <div class="panel-body">
+                    @can('isRole', 'App\Alumno')
+                    <p>Bienvenido! {{ $alumno->nombre }} {{ $alumno->apellidos }}</p>
+                    @endcan
                     <p>This site is a plain, unconfigured installation of the latest stable version of Moodle.</p>
                     <p>Use one of the following demo accounts to log in and play with it:</p>
                     <ul>
@@ -36,7 +39,15 @@
 
                 <div class="panel-body">
                     @can('isRole', 'App\Alumno')
-                    Bienvenido! {{ $alumno->nombre }} {{ $alumno->apellidos }}
+                    @foreach($alumno->grupo->cursos as $curso)
+                        <blockquote>
+                            <p>{{ $curso->nombre }}</p>
+                            <p>Maestro: {{ $curso->maestro->nombre }} {{ $curso->maestro->apellidos }}</p>
+                            <p>Inicio: {{$curso->fecha_inicio}}</p>
+                            <p>Descripcion: {{$curso->descripcion}}</p>
+                        </blockquote>
+                    @endforeach
+
                     @endcan
 
                     @can('isRole', 'App\Maestro')

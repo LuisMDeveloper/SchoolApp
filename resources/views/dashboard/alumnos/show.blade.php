@@ -32,10 +32,10 @@
                     <td class="col-md-2 text-right">Fecha de nacimiento:</td> <td>{{ $alumno->fecha_nacimiento }}</td>
                 </tr>
                 <tr>
-                    <td class="col-md-2 text-right">Telefono:</td> <td>{{ $alumno->telefono }}</td>
+                    <td class="col-md-2 text-right">Tel&eacute;fono:</td> <td>{{ $alumno->telefono }}</td>
                 </tr>
                 <tr>
-                    <td class="col-md-2 text-right">¿Como nos conociste?:</td> <td>{{ $alumno->como_nos_conociste }}</td>
+                    <td class="col-md-2 text-right">&iquest;Como nos conociste?:</td> <td>{{ $alumno->como_nos_conociste }}</td>
                 </tr>
                 <tr>
                     <td class="col-md-2 text-right">Nombre del tutor:</td> <td>{{ $alumno->nombre_del_tutor }}</td>

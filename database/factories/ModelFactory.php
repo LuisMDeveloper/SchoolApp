@@ -34,3 +34,25 @@ $factory->define(App\Alumno::class, function (Faker\Generator $faker) {
         'facebook' => $faker->firstName,
     ];
 });
+
+$factory->define(App\Maestro::class, function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->firstName,
+        'apellidos' => $faker->lastName,
+        'direccion' => $faker->address,
+        'genero' => $faker->randomElement(['Masculino','Femenino']),
+        'fecha_nacimiento' => $faker->date('Y-m-d','2010-01-01'),
+        'telefono' => $faker->phoneNumber,
+    ];
+});
+
+$factory->define(App\Curso::class, function (Faker\Generator $faker) {
+    return [
+        'nombre' => $faker->colorName,
+        'fecha_inicio' => $faker->date('Y-m-d','2010-01-01'),
+        'fecha_fin' => $faker->date('Y-m-d','2010-01-01'),
+        'descripcion' => $faker->paragraph,
+        'maestro_id' => $faker->randomElement(array('1','2','3','4','5')),
+        'materia_id' => $faker->randomElement(array('1','2')),
+    ];
+});
