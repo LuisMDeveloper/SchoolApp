@@ -10,6 +10,8 @@ use App\Maestro;
 use App\Materia;
 use App\Http\Requests;
 
+use Carbon\Carbon;
+
 class CursosController extends Controller
 {
     /**
@@ -47,6 +49,7 @@ class CursosController extends Controller
      */
     public function store(Request $request)
     {
+        //return dd($request->all());
         $curso = new Curso();
         $curso->nombre          = $request->input('nombre');
         $curso->fecha_inicio    = $request->input('fecha_inicio');
@@ -54,6 +57,39 @@ class CursosController extends Controller
         $curso->descripcion     = $request->input('descripcion');
         $curso->materia_id      = $request->input('materia_id');
         $curso->maestro_id      = $request->input('maestro_id');
+        if ($request->input('lunes_time_yes')) {
+            //$carbon = new Carbon($request->input('lunes_time_yes'), 'America/Vancouver');
+            //dd($request->input('lunes_time'));
+            $lunes_time_de = Carbon::createFromFormat('H:i', $request->input('lunes_time_de'))->toTimeString();
+            $lunes_time_a = Carbon::createFromFormat('H:i', $request->input('lunes_time_a'))->toTimeString();
+            $curso->lunes_de    = $lunes_time_de;
+            $curso->lunes_a     = $lunes_time_a;
+        }
+        if ($request->input('martes_time_yes')) {
+            $martes_time_de = Carbon::createFromFormat('H:i', $request->input('martes_time_de'))->toTimeString();
+            $martes_time_a = Carbon::createFromFormat('H:i', $request->input('martes_time_a'))->toTimeString();
+            $curso->martes_de    = $martes_time_de;
+            $curso->martes_a     = $martes_time_a;
+
+        }
+        if ($request->input('miercoles_time_yes')) {
+            $miercoles_time_de = Carbon::createFromFormat('H:i', $request->input('miercoles_time_de'))->toTimeString();
+            $miercoles_time_a = Carbon::createFromFormat('H:i', $request->input('miercoles_time_a'))->toTimeString();
+            $curso->miercoles_de    = $miercoles_time_de;
+            $curso->miercoles_a     = $miercoles_time_a;
+        }
+        if ($request->input('jueves_time_yes')) {
+            $jueves_time_de = Carbon::createFromFormat('H:i', $request->input('jueves_time_de'))->toTimeString();
+            $jueves_time_a = Carbon::createFromFormat('H:i', $request->input('jueves_time_a'))->toTimeString();
+            $curso->jueves_de    = $jueves_time_de;
+            $curso->jueves_a     = $jueves_time_a;
+        }
+        if ($request->input('viernes_time_yes')) {
+            $viernes_time_de = Carbon::createFromFormat('H:i', $request->input('viernes_time_de'))->toTimeString();
+            $viernes_time_a = Carbon::createFromFormat('H:i', $request->input('viernes_time_a'))->toTimeString();
+            $curso->viernes_de    = $viernes_time_de;
+            $curso->viernes_a     = $viernes_time_a;
+        }
         $curso->save();
 
         return redirect('cursos');
@@ -68,7 +104,6 @@ class CursosController extends Controller
     public function show($id)
     {
         $curso = Curso::find($id);
-
         return view('dashboard.cursos.show')->with('curso', $curso);
     }
 

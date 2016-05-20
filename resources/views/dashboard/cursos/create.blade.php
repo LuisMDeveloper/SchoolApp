@@ -50,6 +50,89 @@
                 {!! Form::textarea('descripcion', null, ['class' => 'form-control']) !!}
             </div>
 
+            <div class="form-group">
+                {!! Form::label('Lunes') !!}
+                {!! Form::checkbox('lunes_time_yes', 'true') !!}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Form::label('lunes_time_de', 'De:') !!}
+                        {!! Form::input('time', 'lunes_time_de', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Form::label('lunes_time_a', 'A:') !!}
+                        {!! Form::input('time', 'lunes_time_a', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('Martes') !!}
+                {!! Form::checkbox('martes_time_yes', 'true') !!}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Form::label('martes_time_de', 'De:') !!}
+                        {!! Form::input('time', 'martes_time_de', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Form::label('martes_time_a', 'A:') !!}
+                        {!! Form::input('time', 'martes_time_a', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('Miercoles') !!}
+                {!! Form::checkbox('miercoles_time_yes', 'true') !!}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Form::label('miercoles_time_de', 'De:') !!}
+                        {!! Form::input('time', 'miercoles_time_de', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Form::label('miercoles_time_a', 'A:') !!}
+                        {!! Form::input('time', 'miercoles_time_a', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('Jueves') !!}
+                {!! Form::checkbox('jueves_time_yes', 'true') !!}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Form::label('jueves_time_de', 'De:') !!}
+                        {!! Form::input('time', 'jueves_time_de', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Form::label('jueves_time_a', 'A:') !!}
+                        {!! Form::input('time', 'jueves_time_a', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('Viernes') !!}
+                {!! Form::checkbox('viernes_time_yes', 'true') !!}
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        {!! Form::label('viernes_time_de', 'De:') !!}
+                        {!! Form::input('time', 'viernes_time_de', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                    <div class="col-sm-6">
+                        {!! Form::label('viernes_time_a', 'A:') !!}
+                        {!! Form::input('time', 'viernes_time_a', date('07:00'), ['class' => 'form-control', 'step' => '1800']) !!}
+                    </div>
+                </div>
+            </div>
+
+
             {!! Form::submit('Dar de alta', ['class' => 'btn btn-primary pull-right']) !!}
 
             {!! Form::close() !!}
