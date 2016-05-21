@@ -13,4 +13,9 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+    mix.sass('fullcalendar.scss');
+    mix.scripts(['jquery.js'], 'public/js/jquery.js');
+    mix.scripts(['moment.js'], 'public/js/moment.js');
+    mix.scripts(['fullcalendar.js'], 'public/js/fullcalendar.js');
+    mix.scripts(['app.js'], 'public/js/app.js');
 });

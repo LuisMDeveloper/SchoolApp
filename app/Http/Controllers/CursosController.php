@@ -12,6 +12,8 @@ use App\Http\Requests;
 
 use Carbon\Carbon;
 
+use JavaScript;
+
 class CursosController extends Controller
 {
     /**
@@ -104,6 +106,26 @@ class CursosController extends Controller
     public function show($id)
     {
         $curso = Curso::find($id);
+
+
+        JavaScript::put([
+            'lunes_de' => $curso->lunes_de,
+            'lunes_a' => $curso->lunes_a,
+
+            'martes_de' => $curso->martes_de,
+            'martes_a' => $curso->martes_a,
+            'miercoles_de' => $curso->miercoles_de,
+            'miercoles_a' => $curso->miercoles_a,
+            'jueves_de' => $curso->jueves_de,
+            'jueves_a' => $curso->jueves_a,
+            'viernes_de' => $curso->viernes_de,
+            'viernes_a' => $curso->viernes_a,
+            'foo' => 'bar',
+            'age' => 29
+        ]);
+
+
+
         return view('dashboard.cursos.show')->with('curso', $curso);
     }
 
