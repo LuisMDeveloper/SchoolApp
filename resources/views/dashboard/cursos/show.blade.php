@@ -44,49 +44,96 @@
 
             // page is now ready, initialize the calendar...
 
-            var lunes_start = '2016-05-16T'+lunes_de;
-            var lunes_end = '2016-05-16T'+lunes_a;
+            //2016-05-23T
+            var lunes = moment().startOf('isoweek');
+            var lunes_str = moment().startOf('isoweek').format("YYYY-MM-DDT");
+            var martes = lunes.add(1, 'day');
+            var martes_str = martes.format("YYYY-MM-DDT");
+            var miercoles = martes.add(1, 'day');
+            var miercoles_str = miercoles.format("YYYY-MM-DDT");
+            var jueves = miercoles.add(1, 'day');
+            var jueves_str = jueves.format("YYYY-MM-DDT");
+            var viernes = jueves.add(1, 'day');
+            var viernes_str = viernes.format("YYYY-MM-DDT");
+            var sabado = viernes.add(1, 'day');
+            var sabado_str = sabado.format("YYYY-MM-DDT");
+            var domingo = sabado.add(1, 'day');
+            var domingo_str = domingo.format("YYYY-MM-DDT");
+
+            var lunes_start = lunes_str + lunes_de;
+            var lunes_end = lunes_str + lunes_a;
             console.log(lunes_start);
             console.log(lunes_end);
 
-            var martes_start = '2016-05-17T'+martes_de;
-            var martes_end = '2016-05-17T'+martes_a;
-            var miercoles_start = '2016-05-18T'+miercoles_de;
-            var miercoles_end = '2016-05-18T'+miercoles_a;
-            var jueves_start = '2016-05-19T'+jueves_de;
-            var jueves_end = '2016-05-19T'+jueves_a;
-            var viernes_start = '2016-05-20T'+viernes_de;
-            var viernes_end = '2016-05-20T'+viernes_a;
+            var martes_start = martes_str + martes_de;
+            var martes_end = martes_str + martes_a;
+
+            var miercoles_start = miercoles_str + miercoles_de;
+            var miercoles_end = miercoles_str + miercoles_a;
+
+            var jueves_start = jueves_str + jueves_de;
+            var jueves_end = jueves_str + jueves_a;
+
+            var viernes_start = viernes_str + viernes_de;
+            var viernes_end = viernes_str + viernes_a;
+
+            //if ($curso->lunes_de != '00:00:00') {
+            //    $lunes_time_yes = 'true';
+            //}
+
+            var events = [];
+
+            if (lunes_de != '00:00:00') {
+                events.push({
+                    title: 'Lunes',
+                    start: lunes_start,
+                    end: lunes_end
+                });
+            }
+
+            if (martes_de != '00:00:00') {
+                events.push({
+                    title: 'Martes',
+                    start: martes_start,
+                    end: martes_end
+                });
+            }
+
+            if (miercoles_de != '00:00:00') {
+                events.push({
+                    title: 'Miercoles',
+                    start: miercoles_start,
+                    end: miercoles_end
+                });
+            }
+
+            if (jueves_de != '00:00:00') {
+                events.push({
+                    title: 'Jueves',
+                    start: jueves_start,
+                    end: jueves_end
+                });
+            }
+
+            if (viernes_de != '00:00:00') {
+                events.push({
+                    title: 'Viernes',
+                    start: viernes_start,
+                    end: viernes_end
+                });
+            }
 
             $('#calendar').fullCalendar({
+                allDaySlot: false,
+                header: false,
                 defaultView: 'agendaWeek',
-                events: [
-                    {
-                        title: 'Lunes',
-                        start: lunes_start,
-                        end: lunes_end
-                    },
-                    {
-                        title: 'Martes',
-                        start: martes_start,
-                        end: martes_end
-                    },
-                    {
-                        title: 'Miercoles',
-                        start: miercoles_start,
-                        end: miercoles_end
-                    },
-                    {
-                        title: 'Jueves',
-                        start: jueves_start,
-                        end: jueves_end
-                    },
-                    {
-                        title: 'Viernes',
-                        start: viernes_start,
-                        end: viernes_end
+                events: events,
+                views: {
+                    week: {
+                        // options apply to basicWeek and agendaWeek views
+                        columnFormat: 'dddd'
                     }
-                ]
+                }
             })
 
         });

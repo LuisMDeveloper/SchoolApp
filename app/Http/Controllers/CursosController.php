@@ -140,11 +140,48 @@ class CursosController extends Controller
         $curso = Curso::find($id);
         $materias = Materia::pluck('nombre', 'id');
         $maestros = Maestro::pluck('nombre', 'id');
+
+        $lunes_time_yes = '';
+        if ($curso->lunes_de != '00:00:00') {
+            $lunes_time_yes = 'true';
+        }
+
+        $martes_time_yes = '';
+        if ($curso->martes_de != '00:00:00') {
+            $martes_time_yes = 'true';
+        }
+
+        $miercoles_time_yes = '';
+        if ($curso->miercoles_de != '00:00:00') {
+            $miercoles_time_yes = 'true';
+        }
+
+        $jueves_time_yes = '';
+        if ($curso->jueves_de != '00:00:00') {
+            $jueves_time_yes = 'true';
+        }
+
+        $viernes_time_yes = '';
+        if ($curso->viernes_de != '00:00:00') {
+            $viernes_time_yes = 'true';
+        }
+
+        //return dd($lunes_time_yes);
+        //'00:00:00';
+
         $data = array(
             'materias' => $materias,
             'maestros' => $maestros,
-            'curso' => $curso
+            'curso' => $curso,
+            'lunes_time_yes' => $lunes_time_yes,
+            'martes_time_yes' => $martes_time_yes,
+            'miercoles_time_yes' => $miercoles_time_yes,
+            'jueves_time_yes' => $jueves_time_yes,
+            'viernes_time_yes' => $viernes_time_yes,
+
         );
+
+        //return dd($data);
 
         return view('dashboard.cursos.edit')->with($data);
     }
