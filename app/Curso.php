@@ -29,4 +29,12 @@ class Curso extends Model
     {
         return $this->belongsToMany('App\Grupo');
     }
+
+    /**
+     * Get the competencies for the curso.
+     */
+    public function competencies()
+    {
+        return $this->hasMany('App\Competency');
+    }
 }
