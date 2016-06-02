@@ -34,7 +34,21 @@
                 <tr>
                     <td class="col-md-2 text-right">descripcion:</td> <td>{{ $curso->descripcion }}</td>
                 </tr>
+                <tr>
+                    <td class="col-md-2 text-right">competencias:</td> <td>
+                        @foreach($competencies as $key => $competency)
+                            <ul>
+                                <li><a href="{{ URL::to('cursos/'.$curso->id.'/competencies/' . $competency->id) }}">{{ $competency->name }}</a></li>
+                            </ul>
+                        @endforeach
+                        <a href="{{ URL::to('cursos/'.$curso->id.'/competencies') }}">Competencias</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-2 text-right">Horario:</td> <td></td>
+                </tr>
             </table>
+
 
             <div id='calendar'></div>
         </div>

@@ -36,6 +36,7 @@ Route::get('grupos/ecxel/{id}', 'GrupoController@ecxel');
 Route::put('grupos/manual/{id}', 'GrupoController@manual');
 Route::get('grupos/quitar/{grupo}/{alumno}', 'GrupoController@quitar');
 Route::resource('grupos', 'GrupoController');
+Route::resource('cursos.competencies', 'CompetencyController');
 
 Route::resource('materias', 'MateriaController');
 Route::resource('maestros', 'MaestrosController');

@@ -106,7 +106,7 @@ class CursosController extends Controller
     public function show($id)
     {
         $curso = Curso::find($id);
-
+        $competencies = $curso->competencies;
 
         JavaScript::put([
             'lunes_de' => $curso->lunes_de,
@@ -126,7 +126,7 @@ class CursosController extends Controller
 
 
 
-        return view('dashboard.cursos.show')->with('curso', $curso);
+        return view('dashboard.cursos.show')->with('curso', $curso)->with('competencies', $competencies);
     }
 
     /**
