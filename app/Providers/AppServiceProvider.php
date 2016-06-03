@@ -8,6 +8,7 @@ use App\Grupo;
 use App\Maestro;
 use App\Materia;
 use App\User;
+use App\Grade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -36,6 +37,9 @@ class AppServiceProvider extends ServiceProvider
 
         $cursosCount = Curso::all()->count();
         view()->share('cursosCount', $cursosCount);
+
+        $gradesCount = Grade::all()->count();
+        view()->share('gradesCount', $gradesCount);
     }
 
     /**

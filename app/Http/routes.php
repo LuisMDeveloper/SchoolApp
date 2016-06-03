@@ -43,3 +43,7 @@ Route::resource('maestros', 'MaestrosController');
 Route::get('cursos/asignar/{id}', 'CursosController@asignar');
 Route::put('cursos/manual/{id}', 'CursosController@manual');
 Route::resource('cursos', 'CursosController');
+Route::resource('grades', 'GradeController');
+Route::get('grades/curso/{id}', 'GradeController@deCurso');
+Route::get('grades/alumno/{alumno}/cursos/{cursos}', 'GradeController@calificar');
+Route::put('grades/alumno/{alumno}/cursos/{cursos}', 'GradeController@calificarAlumno');

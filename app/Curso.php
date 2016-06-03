@@ -3,9 +3,20 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Curso extends Model
 {
+    public function getInicioAttribute($value)
+    {
+        return Carbon::parse($value)->toFormattedDateString();
+    }
+
+    public function getFinAttribute($value)
+    {
+        return Carbon::parse($value)->toFormattedDateString();
+    }
+
     /**
      * Get the materia record associated with the curso.
      */

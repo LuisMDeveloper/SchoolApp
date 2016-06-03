@@ -56,3 +56,11 @@ $factory->define(App\Curso::class, function (Faker\Generator $faker) {
         'materia_id' => $faker->randomElement(array('1','2')),
     ];
 });
+
+$factory->define(App\Grade::class, function (Faker\Generator $faker) {
+    return [
+        'competency_id' => App\Competency::all()->random()->id,
+        'alumno_id' => App\Alumno::all()->random()->id,
+        'grade' => $faker->numberBetween(40, 100)
+    ];
+});

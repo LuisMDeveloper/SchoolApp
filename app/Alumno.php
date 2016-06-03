@@ -21,4 +21,12 @@ class Alumno extends Model
     {
         return $this->belongsTo('App\Grupo');
     }
+
+    /**
+     * Get the grades for the alumno.
+     */
+    public function grades()
+    {
+        return $this->hasMany('App\Grade');
+    }
 }

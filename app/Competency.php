@@ -13,4 +13,12 @@ class Competency extends Model
     {
         return $this->belongsTo('App\Curso');
     }
+
+    /**
+     * Get the grades for the competency.
+     */
+    public function grades()
+    {
+        return $this->hasMany('App\Grade');
+    }
 }
