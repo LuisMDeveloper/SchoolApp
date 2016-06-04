@@ -40,6 +40,9 @@ class AppServiceProvider extends ServiceProvider
 
         $gradesCount = Grade::all()->count();
         view()->share('gradesCount', $gradesCount);
+
+        $attendanceCount = 0;//Attendance::all()->count();
+        view()->share('attendanceCount', $attendanceCount);
     }
 
     /**

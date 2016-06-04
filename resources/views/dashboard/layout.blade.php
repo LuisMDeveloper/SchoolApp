@@ -17,6 +17,7 @@
                             <li role="presentation" class="{{ Request::is('maestros') ? 'active' : '' }}"><a href="{{ URL::to('maestros') }}">Maestros <span class="badge pull-right">{{$maestrosCount}}</span></a></li>
                             <li role="presentation" class="{{ Request::is('cursos') ? 'active' : '' }}"><a href="{{ URL::to('cursos') }}">Cursos <span class="badge pull-right">{{$cursosCount}}</span></a></li>
                             <li role="presentation" class="{{ Request::is('grades') ? 'active' : '' }}"><a href="{{ URL::to('grades') }}">Calificaciones <span class="badge pull-right">{{$gradesCount}}</span></a></li>
+                            <li role="presentation" class="{{ Request::is('attendance') ? 'active' : '' }}"><a href="{{ URL::to('attendance') }}">Asistencia <span class="badge pull-right">{{$attendanceCount}}</span></a></li>
                         </ul>
                     </div>
                 </div>
