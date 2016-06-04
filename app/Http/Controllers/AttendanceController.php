@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Alumno;
 use App\Attendance;
 use App\Curso;
+use App\Grupo;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
+use Excel;
 
 class AttendanceController extends Controller
 {
@@ -247,6 +249,104 @@ class AttendanceController extends Controller
         return redirect('attendance/curso/'.$curso_id);
     }
 
+    public function asistenciaExcel($grupo_id, $curso_id) {
+        $grupo = Grupo::find($grupo_id);
+        $curso = Curso::find($curso_id);
+
+        //$alumnos = DB::table('alumnos')
+        //    ->where('grupo_id', $grupo->id)
+        //    ->select('nombre', 'apellidos');
+
+        $inicio = Carbon::createFromFormat('Y-m-d', $curso->fecha_inicio);
+        $fin = Carbon::createFromFormat('Y-m-d', $curso->fecha_fin);
+
+        $alumnos= Alumno::select('nombre', 'apellidos')
+            ->where('grupo_id', '=', $grupo->id)
+            ->get();
+
+        $dates = array();
+        $daysOfCurse = 0;
+
+        if ($curso->lunes_de != '00:00:00') {
+            $daysOfCurse += $inicio->diffInDaysFiltered(function(Carbon $date) use (&$dates) {
+                if ($date->isMonday()) {
+                    $dates[] = $date->toDateString();
+                    return true;
+                } else {
+                    return false;
+                }
+            }, $fin);
+        }
+
+        if ($curso->martes_de != '00:00:00') {
+            $daysOfCurse += $inicio->diffInDaysFiltered(function(Carbon $date) use (&$dates) {
+                if ($date->isTuesday()) {
+                    $dates[] = $date->toDateString();
+                    return true;
+                } else {
+                    return false;
+                }
+            }, $fin);
+        }
+
+        if ($curso->miercoles_de != '00:00:00') {
+            $daysOfCurse += $inicio->diffInDaysFiltered(function(Carbon $date) use (&$dates) {
+                if ($date->isWednesday()) {
+                    $dates[] = $date->toDateString();
+                    return true;
+                } else {
+                    return false;
+                }
+            }, $fin);
+        }
+
+        if ($curso->jueves_de != '00:00:00') {
+            $daysOfCurse += $inicio->diffInDaysFiltered(function(Carbon $date) use (&$dates) {
+                if ($date->isThursday()) {
+                    $dates[] = $date->toDateString();
+                    return true;
+                } else {
+                    return false;
+                }
+            }, $fin);
+        }
+
+        if ($curso->viernes_de != '00:00:00') {
+            $daysOfCurse += $inicio->diffInDaysFiltered(function(Carbon $date) use (&$dates) {
+                if ($date->isFriday()) {
+                    $dates[] = $date->toDateString();
+                    return true;
+                } else {
+                    return false;
+                }
+            }, $fin);
+        }
+
+        Excel::create($curso->nombre.'-'.$grupo->nombre, function($excel) use ($curso, $grupo, $alumnos,$dates) {
+
+            $excel->setTitle($curso->nombre.'-'.$grupo->nombre);
+
+            $excel->sheet($grupo->nombre, function($sheet) use ($curso, $grupo, $alumnos,$dates) {
+
+
+                //$lista = array(
+                //    'nombre' => $grupo->alumnos->pluck('nombre')->toArray(),
+                //    'apellidos' => $grupo->alumnos->pluck('apellidos')->toArray(),
+                //);
+                //$lista = $grupo->alumnos->except(['id', 'direccion']);
+                //dd($alumnos);
+                $sheet->row(1, array('Curso', $curso->nombre));
+                $sheet->row(2, array('Grupo', $grupo->nombre));
+                $sheet->fromArray($alumnos, null, 'A3');
+                $sheet->row(3, array_collapse([array('Nombre', 'Apellidos'), $dates ]));
+
+
+            });
+
+        })->download('xls');
+
+        return redirect('attendance/curso/'.$curso_id);
+    }
     /**
      * Show the form for creating a new resource.
      *

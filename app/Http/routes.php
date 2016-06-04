@@ -1,4 +1,5 @@
 <?php
+$excel = App::make('excel');
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,4 @@ Route::resource('attendance', 'AttendanceController');
 Route::get('attendance/curso/{id}', 'AttendanceController@deCurso');
 Route::get('attendance/alumno/{alumno}/cursos/{cursos}', 'AttendanceController@asistencia');
 Route::put('attendance/alumno/{alumno}/cursos/{cursos}', 'AttendanceController@asistenciaAlumno');
+Route::get('attendance/grupo/{grupo}/cursos/{cursos}', 'AttendanceController@asistenciaExcel');

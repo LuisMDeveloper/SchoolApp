@@ -40,7 +40,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="panel-footer"><span>{{$curso->fecha_inicio}}</span><span class="pull-right">{{$curso->fecha_inicio}}</span></div>
+                    <div class="panel-footer">
+                        <a class="btn btn-xs btn-primary" href="{{ URL::to('attendance/grupo/'.$grupo->id.'/cursos/' . $curso->id) }}" role="button"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Descargar</a>
+                        <span>{{$curso->fecha_inicio}}</span>
+                        <span class="pull-right">{{$curso->fecha_inicio}}</span>
+                    </div>
                 </div>
             @endforeach
         </div>
