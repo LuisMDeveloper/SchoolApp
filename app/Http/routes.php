@@ -48,6 +48,7 @@ Route::resource('grades', 'GradeController');
 Route::get('grades/curso/{id}', 'GradeController@deCurso');
 Route::get('grades/alumno/{alumno}/cursos/{cursos}', 'GradeController@calificar');
 Route::put('grades/alumno/{alumno}/cursos/{cursos}', 'GradeController@calificarAlumno');
+Route::get('grades/grupo/{grupo}/curso/{curso}', 'GradeController@gradesExcel');
 Route::resource('attendance', 'AttendanceController');
 Route::get('attendance/curso/{id}', 'AttendanceController@deCurso');
 Route::get('attendance/alumno/{alumno}/cursos/{cursos}', 'AttendanceController@asistencia');

@@ -41,7 +41,7 @@
                                     @if ($alumno->grades->isEmpty())
                                         <td></td>
                                     @else
-                                        <td>{{ $alumno->grades->whereIn('competency_id', $competencies->lists('id')->toArray())->avg('grade') }}</td>
+                                        <td>{{ number_format($alumno->grades->whereIn('competency_id', $competencies->lists('id')->toArray())->avg('grade'), 1) }}</td>
                                     @endif
 
                                     <td>
@@ -51,6 +51,9 @@
                             @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="panel-footer">
+                        <a class="btn btn-xs btn-primary" href="{{ URL::to('grades/grupo/'.$grupo->id.'/curso/' . $curso->id) }}" role="button"><span class="glyphicon glyphicon-download" aria-hidden="true"></span> Descargar</a>
                     </div>
                 </div>
             @endforeach
